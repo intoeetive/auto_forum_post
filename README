@@ -1,0 +1,8 @@
+This add-on allows you to automatically post to EE forum whenever entry is submitted in ExpressionEngine.
+Works similar to built-in "Associating Channel Entries with Forum Topics" feature (http://ellislab.com/expressionengine/user-guide/modules/forum/channel_forum.html), but without the need to enter title and text of post manually. 
+
+You are able to select a custom field that will contain text of the post (only first paragraph will be posted with a "read more" link to entry page).
+
+You can select to which forum to post (or not post) on per-channel basis.
+
+It is also possible to sync entry comments with forum post comments.
