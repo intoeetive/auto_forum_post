@@ -276,7 +276,7 @@ class Auto_forum_post_ext
 			$this->EE->db->update('channel_titles', $fdata);
 
 			// Update the forum stats
-			$this->_update_post_stats($forum_id);
+			$this->_update_post_stats($this->settings['channel_'.$edata['channel_id']]);
 			$this->_update_global_stats();
 		}
 		else
