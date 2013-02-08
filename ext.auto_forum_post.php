@@ -15,6 +15,8 @@ class Auto_forum_post_ext
 	{
 		$this->EE =& get_instance();
 		$this->settings = $settings;
+		
+		$this->EE->lang->loadfile('auto_forum_post');  
 	}
 
 
@@ -88,10 +90,10 @@ class Auto_forum_post_ext
         $this->EE->db->from('extensions');
         $this->EE->db->where('class', __CLASS__);
         $this->EE->db->where('enabled', 'y');
-        $this->EE->db->where("(hook= 'forum_submit_post_end' OR hook='insert_comment_end')");
+        $this->EE->db->where("(hook='forum_submit_post_end' OR hook='insert_comment_end')");
         //echo $this->EE->db->_compile_select();
         $ext_q = $this->EE->db->get();
-        
+
         if ($ext_q->num_rows()>0)
         {
         	$sync_comments = 'y';
@@ -141,7 +143,7 @@ class Auto_forum_post_ext
     					'post_text',
     					$custom_fields, 
     					$current['post_text']);
-
+    					
 		$vars['settings'][lang('sync_comments')] = form_dropdown(
 					'sync_comments',
 					$yes_no_options, 
@@ -171,7 +173,7 @@ class Auto_forum_post_ext
         
         if (isset($_POST['sync_comments']) && $_POST['sync_comments']!='')
         {
-            $data = array('enabled' => $this->EE->input->post('n'));
+            $data = array('enabled' => $this->EE->input->post('sync_comments'));
             
             $this->EE->db->where('class', __CLASS__);
         	$this->EE->db->where('hook', 'forum_submit_post_end');
@@ -235,11 +237,11 @@ class Auto_forum_post_ext
 		
 		$body = $edata[$this->settings['post_text']];
 		
-		$start 		= strpos($body, '<p>');
-		$end 		= strpos($body, '</p>', $start);
-		$firstP 	= substr($body, $start, $end - $start + 4);
+		//$start 		= strpos($body, '<p>');
+		//$end 		= strpos($body, '</p>', $start);
+		//$firstP 	= substr($body, $start, $end - $start + 4);
 
-		$new_body 	= $firstP.'<p>&nbsp;</p><p><a href="'.$this->EE->functions->remove_double_slashes($basepath.'/'.$edata['url_title']).'">'.lang('read_more').'</a></p>';
+		$new_body 	= $body.'<p>&nbsp;</p><p><a href="'.$this->EE->functions->remove_double_slashes($basepath.'/'.$edata['url_title']).'">'.lang('read_more').'</a></p>';
 
 		$data = array(
 						'title'			=> $edata['title'],
