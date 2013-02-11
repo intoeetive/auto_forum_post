@@ -6,7 +6,7 @@ class Auto_forum_post_ext
 	public $settings = array();
 
 	public $name = 'Auto Forum Post';
-	public $version = '1.0.0';
+	public $version = '1.0.1';
 	public $description = 'Automatically post to forum when entry is submitted';
 	public $settings_exist = 'y';
 	public $docs_url = 'https://github.com/intoeetive/auto_forum_post';
@@ -205,8 +205,8 @@ class Auto_forum_post_ext
 		
 		$edata = array_merge($edata, $meta);
 		
-		if ($edata['status']=='')
-        {
+		//if ($edata['status']=='')
+        //{
         	//better workflow compatibility
 			foreach($_POST as $k => $v) 
 			{
@@ -216,7 +216,7 @@ class Auto_forum_post_ext
 					break;
 				}
 			}
-        }
+        //}
         
         //var_dump($edata['status']);
         //var_dump($this->settings['channel_'.$edata['channel_id']]);
