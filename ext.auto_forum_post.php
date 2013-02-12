@@ -1,4 +1,9 @@
 <?php
+
+// based on original work of w3care
+// some code by w3care
+// http://www.w3care.com/
+
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Auto_forum_post_ext
