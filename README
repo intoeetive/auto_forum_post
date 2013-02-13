@@ -4,5 +4,3 @@ Works similar to built-in "Associating Channel Entries with Forum Topics" featur
 You are able to select a custom field that will contain text of the post (only first paragraph will be posted with a "read more" link to entry page).
 
 You can select to which forum to post (or not post) on per-channel basis.
-
-It is also possible to sync entry comments with forum post comments.
